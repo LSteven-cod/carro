@@ -7,11 +7,14 @@
  */
 public class carro
 {
-    String color;
-    double galones;
-    boolean encendido;
-    int puertas;
-    double motor;
+    private static final double MAX_GALONES = 20;
+    
+   private String color;
+   private double galones;
+   private boolean encendido;
+   private int puertas;
+   private double motor;
+   private char []asientos;
 /**
      * Constructor for objects of class carro
      */
@@ -19,9 +22,10 @@ public class carro
     {
         // initialise instance variables
         this.color= "negro"; 
-        this.galones= 30.5;
-        this.encendido= false;
+        this.galones= 10.5;
+        this.encendido= true;
         this.motor= 1.5;
+        this.asientos = new char[]{'-','-','-','-'};  
         
     }
     
@@ -35,7 +39,7 @@ public class carro
         this.encendido= newArrancado;
         this.puertas = newPuertas;
         this.motor = newMotor;
-        
+              
     }
     
     public void setColor(String newColor){
@@ -43,7 +47,11 @@ public class carro
     }
     
     public void setGalones(double newGalones){
-        this.galones = newGalones;
+        if (newGalones < MAX_GALONES){
+            this.galones = newGalones;
+        }
+        
+        
     }
 
    public void setEncendido(boolean newEncendido){
@@ -82,12 +90,28 @@ public class carro
         
         cad += "El carro tiene los siguientes atributos: "+"\n";
         cad += "\t- El color es: " + getColor() + "\n" ;
-        cad += "\t- Tiene en el tanque: " + getGalones() + "\n" ;
-        cad += "\t- El carro esta encendido: " + getEncendido() + "\n";
+        if (getGalones()<MAX_GALONES){
+            cad += "\t- Tiene en el tanque: " + getGalones() + " galones \n" ;
+        }
+        else{
+            cad+= "\t- el tanque esta rebalsando";
+        }
+        
+        if (getEncendido()==true){
+            cad += "\t- El carro esta encendido \n";
+        }
+        else{
+            cad += "\t- El carro esta apagado \n";
+        }
         cad +="\t- El motor del auto es: " +getMotor()+ "\n";
+        System.out.println(cad);
+        
         
         
         return cad;
+    }
+    public void ocuparLugar(int pos){
+        this.asientos[pos] = 'x';
     }
 
 }
