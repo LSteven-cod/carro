@@ -83,7 +83,8 @@ public class carro
         cad += "El carro tiene los siguientes atributos: "+"\n";
         cad += "\t- El color es: " + getColor() + "\n" ;
         cad += "\t- Tiene en el tanque: " + getGalones() + "\n" ;
-        cad += "\t- El carro esta encendido: " + getEncendido() + "\n" ;
+        cad += "\t- El carro esta encendido: " + getEncendido() + "\n";
+        cad +="\t- El motor del auto es: " +getMotor()+ "\n";
         
         
         return cad;
